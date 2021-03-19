@@ -16,6 +16,12 @@ app.use('/static', express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json())
 app.use(expressLayouts)
 
+//get index route
+app.get("/", (req, res) => {
+    res.render("pages/index")
+});
+
+
 app.listen(PORT, () => {
     console.log(`server is listening on localhost${PORT}`);
 });

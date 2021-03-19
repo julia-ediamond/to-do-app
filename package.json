@@ -1,0 +1,29 @@
+{
+  "name": "todoapp",
+  "version": "1.0.0",
+  "description": "INCODE2 Individual project",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0",
+    "layouts": "^3.0.2",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.7",
+    "pg": "^8.5.1",
+    "pg-promise": "^10.9.5",
+    "pgpromise": "^0.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "create-database": "psql -U postgres -h localhost -p 3000 -f sql/create-database.sql",
+    "create-tables": "psql -U postgres -h localhost -p 3000 -d todolist -f sql/create-tables.sql",
+    "seed-tables": "psql -U postgres -h localhost -p 3000 -d todolist -f sql/seed-tables.sql",
+    "dev": "nodemon -e js,ejs,css app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

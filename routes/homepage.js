@@ -10,7 +10,7 @@ router.get('/tasks', (req, res) => {
 
 //get all tasks
 router.get('/', (req, res) => {
-    db.any('SELECT user_id, task, date FROM lists')
+    db.any('SELECT task, date FROM lists')
         .then((lists) => {
             console.log(lists);
                 res.render('pages/homepage', {
@@ -28,13 +28,13 @@ router.get('/', (req, res) => {
 
 
 //post task route
-router.post('/task', (req, res) => {
-    let task = req.body.task
-    db.none('INSERT INTO lists (user_id, task, date) VALUES ($1, $2, $3)' /*returning **/
-        [req.body.userId, req.body.task, req.body.date]) 
+router.post('/', (req, res) => {
+    
+    db.query('INSERT INTO lists (task, date) VALUES ($1, $2) RETURNING task, date', 
+        [req.body.task, req.body.date]) 
         .then((lists) => {
             console.log(lists)
-            return res.send()
+            return res.redirect('/')
         })
         .catch((err) => {
             console.log(err)
@@ -46,12 +46,12 @@ router.post('/task', (req, res) => {
 
 
 //delete task route 
-
+/*
 router.post('/delete', (req, res) => {
 
     if (req.query.taskId) {
 
-        db.none('DELETE FROM lists WHERE id = $1 AND user_id = $2', [req.query.id, req.query.userId])
+        db.none('DELETE FROM lists WHERE id = $1', [req.query.id])
             .then((lists) => {
                 res.redirect('/?message=Task%deleted.')
             })
@@ -70,7 +70,7 @@ router.post('/delete', (req, res) => {
         })
     }
 }) 
-        
+       */ 
         
 
 module.exports = router;

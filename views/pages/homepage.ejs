@@ -1,6 +1,6 @@
 <h1>Hello, this is a to do list application</h1>
 
-<form action="/" method="POST">
+<form action="/addtask" method="POST">
     <ul>
         <li>
             <label for="task">What you need to do:</label>
@@ -10,7 +10,39 @@
             <label for="date">When:</label>
             <input type="date" id="date" name="date">
         </li>
-		<button class="submit">Create</button>
-
+		<button class="submit">Create task</button>
+		
     </ul>
 </form>
+
+<div>
+	
+	<table>
+		<thead>
+			<tr>
+				<th>Task id</th>
+				<th>Task</th>
+				<th>Date</th>
+				<th>Delete task</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% for (let i=0; i <lists.length; i++) { %>
+				<tr>
+					<td>
+						<%= lists[i].id%>
+					</td>
+					<td>
+						<%= lists[i].task%>
+					</td>
+					<td>
+						<%= lists[i].date%>
+					</td>
+				</tr>
+				<% } %>
+		</tbody>
+	</table>
+		
+	
+	
+</div>

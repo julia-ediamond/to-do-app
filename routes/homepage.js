@@ -4,15 +4,15 @@ const db = require('../database');
 
 //get homepage route
 
-router.get('/', (req, res) => {
-    res.render('pages/homepage')
+router.get('/tasks', (req, res) => {
+    res.redirect('/')
 });
 
 //get all tasks
-router.get("/tasks", (req, res) => {
+router.get('/', (req, res) => {
     db.any('SELECT user_id, task, date FROM lists')
         .then((lists) => {
-            console.log(list);
+            console.log(lists);
                 res.render('pages/homepage', {
                 lists: lists
                 })
@@ -28,7 +28,7 @@ router.get("/tasks", (req, res) => {
 
 
 //post task route
-router.post("/task", (req, res) => {
+router.post('/task', (req, res) => {
     let task = req.body.task
     db.none('INSERT INTO lists (user_id, task, date) VALUES ($1, $2, $3)' /*returning **/
         [req.body.userId, req.body.task, req.body.date]) 

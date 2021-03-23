@@ -35,13 +35,15 @@
 					<td>
 						<%= lists[i].date%>
 					</td>
-				</tr>
-				<% } %>
+			
+				
 				
 					<td>
-						<form method="post" action="/delete"><button class="not-button">DELETE</button>
+						<form method="post" action="/delete?id=<%= lists[i].id %>"><button class="not-button">DELETE</button>
 						</form>
 					</td>
+				</tr>
+				<% } %>
 		</tbody>
 	</table>
 		

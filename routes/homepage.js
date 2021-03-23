@@ -49,11 +49,11 @@ router.post('/', (req, res) => {
 
 router.post('/delete', (req, res) => {
 
-    if (req.query.taskId) {
+    if (req.query.id) {
 
         db.none('DELETE FROM lists WHERE id = $1', [req.query.id])
-            .then((lists) => {
-                res.redirect('/?message=Task%deleted.')
+            .then(() => {
+                res.redirect('/')
             })
             .catch((err) => {
                 res.render('pages/error', {

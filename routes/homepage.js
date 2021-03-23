@@ -75,5 +75,10 @@ router.post('/deletetask', (req, res) => {
 /*router.post('/markAsDone', (req, res) => {
 
 });*/
+
+router.get('/archived', (req, res) => {
+    res.render('pages/archived')
+});
+
 module.exports = router;
         

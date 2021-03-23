@@ -23,7 +23,9 @@
 			<tr>
 				<th>TASK</th>
 				<th>DATE</th>
+				<th>MARK AS DONE</th>
 				<th>DELETE TASK</th>
+				
 			</tr>
 		</thead>
 		<tbody>
@@ -35,7 +37,9 @@
 					<td>
 						<%= lists[i].date%>
 					</td>
-								
+					<td>
+						<input type="checkbox" value="<%= lists[i].todo %>" name="checkbox"/>
+					</td>		
 					<td>
 						<form method="post" action="/deletetask?id=<%= lists[i].id %>">
 							<button type="submit" class="delete_button">DELETE</button>

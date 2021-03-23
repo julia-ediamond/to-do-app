@@ -10,7 +10,7 @@ router.get('/tasks', (req, res) => {
 
 //get all tasks
 router.get('/', (req, res) => {
-    db.any('SELECT task, date FROM lists')
+    db.any("SELECT task, TO_CHAR(date, 'DD Month') date FROM lists")
         .then((lists) => {
             console.log(lists);
                 res.render('pages/homepage', {
@@ -30,11 +30,11 @@ router.get('/', (req, res) => {
 //post task route
 router.post('/', (req, res) => {
     
-    db.query('INSERT INTO lists (task, date) VALUES ($1, $2) RETURNING task, date', 
+    db.query("INSERT INTO lists (task, date) VALUES ($1, $2) RETURNING task, date", 
         [req.body.task, req.body.date]) 
         .then((lists) => {
             console.log(lists)
-            return res.redirect('/')
+            return res.redirect('/?message=New%20task%20created.')
         })
         .catch((err) => {
             console.log(err)
@@ -46,7 +46,7 @@ router.post('/', (req, res) => {
 
 
 //delete task route 
-/*
+
 router.post('/delete', (req, res) => {
 
     if (req.query.taskId) {
@@ -70,7 +70,7 @@ router.post('/delete', (req, res) => {
         })
     }
 }) 
-       */ 
+       
         
 
 module.exports = router;

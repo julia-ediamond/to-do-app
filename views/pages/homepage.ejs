@@ -1,6 +1,6 @@
 <h1>Hello, this is a to do list application</h1>
 
-<form action="/" method="POST">
+<form action="/addtask" method="POST">
     <ul>
 		
         <li>
@@ -11,7 +11,7 @@
             <label for="date">When:</label>
             <input type="date" id="date" name="date">
         </li>
-		<button class="submit">Create a task</button>
+		<button type="submit">Create a task</button>
 		
     </ul>
 </form>
@@ -21,9 +21,11 @@
 	<table>
 		<thead>
 			<tr>
-				<th>Task</th>
-				<th>Date</th>
-				<th>Delete task</th>
+				<th>TASK</th>
+				<th>DATE</th>
+				<th>MARK AS DONE</th>
+				<th>DELETE TASK</th>
+				
 			</tr>
 		</thead>
 		<tbody>
@@ -35,16 +37,21 @@
 					<td>
 						<%= lists[i].date%>
 					</td>
-				</tr>
-				<% } %>
-				
 					<td>
-						<form method="post" action="/delete"><button class="not-button">DELETE</button>
+						<input class="checkbox" type="checkbox" value="<%= lists[i].todo %>" name="checkbox"/>
+					</td>		
+					<td>
+						<form method="post" action="/deletetask?id=<%= lists[i].id %>">
+							<button type="submit" class="delete_button">DELETE</button>
 						</form>
 					</td>
+					
+				</tr>
+				<% } %>
 		</tbody>
 	</table>
-		
+	<p class="linking-p">Check all <a href="/archived">done tasks</a></p>
+	
 	
 	
 </div>

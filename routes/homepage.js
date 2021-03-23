@@ -10,7 +10,7 @@ router.get('/tasks', (req, res) => {
 
 //get all tasks
 router.get('/', (req, res) => {
-    db.any("SELECT task, TO_CHAR(date, 'DD Month') date FROM lists")
+    db.any("SELECT id, task, TO_CHAR(date, 'DD Month') date FROM lists")
         .then((lists) => {
             console.log(lists);
                 res.render('pages/homepage', {
@@ -28,32 +28,31 @@ router.get('/', (req, res) => {
 
 
 //post task route
-router.post('/', (req, res) => {
-    
-    db.query("INSERT INTO lists (task, date) VALUES ($1, $2) RETURNING task, date", 
-        [req.body.task, req.body.date]) 
+router.post('/addtask', (req, res) => {
+
+    db.query("INSERT INTO lists (task, date) VALUES ($1, $2) RETURNING task, date",
+        [req.body.task, req.body.date])
         .then((lists) => {
             console.log(lists)
-            return res.redirect('/?message=New%20task%20created.')
+            return res.redirect('/')
         })
         .catch((err) => {
             console.log(err)
             res.render('pages/error', {
                 err: err
-			})
-		})
-})
+            })
+        })
+});
 
 
 //delete task route 
 
-router.post('/delete', (req, res) => {
-
-    if (req.query.taskId) {
+router.post('/deletetask', (req, res) => {
+    if (req.query.id) {
 
         db.none('DELETE FROM lists WHERE id = $1', [req.query.id])
-            .then((lists) => {
-                res.redirect('/?message=Task%deleted.')
+            .then(() => {
+                res.redirect(302, '/',)
             })
             .catch((err) => {
                 res.render('pages/error', {
@@ -69,8 +68,17 @@ router.post('/delete', (req, res) => {
             }
         })
     }
-}) 
-       
-        
+});
+
+
+//mark as done route
+/*router.post('/markAsDone', (req, res) => {
+
+});*/
+
+router.get('/archived', (req, res) => {
+    res.render('pages/archived')
+});
 
 module.exports = router;
+        

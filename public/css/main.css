@@ -91,13 +91,21 @@ li {
     list-style-type: none;
 }
 
-.error_message {
+.error_message, .linking-p {
     text-align: center;
-    font-family; Lato;
-    font-size: 20px;
+    font-family: Lato;
+    font-size: 25px;
+    margin-top: 10px;
 }
 
 .delete_button {
     background-color: transparent;
     color: #bcc2cc;
 }
+
+a {
+    color: #00bb8e;
+    text-decoration: none;
+}
+
+

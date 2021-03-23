@@ -38,18 +38,20 @@
 						<%= lists[i].date%>
 					</td>
 					<td>
-						<input type="checkbox" value="<%= lists[i].todo %>" name="checkbox"/>
+						<input class="checkbox" type="checkbox" value="<%= lists[i].todo %>" name="checkbox"/>
 					</td>		
 					<td>
 						<form method="post" action="/deletetask?id=<%= lists[i].id %>">
 							<button type="submit" class="delete_button">DELETE</button>
 						</form>
 					</td>
+					
 				</tr>
 				<% } %>
 		</tbody>
 	</table>
-		
+	<p class="linking-p">Check all <a href="/archived">done tasks</a></p>
+	
 	
 	
 </div>

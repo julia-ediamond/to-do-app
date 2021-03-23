@@ -29,9 +29,9 @@ router.get('/', (req, res) => {
 
 //post task route
 router.post('/addtask', (req, res) => {
-    
-    db.query("INSERT INTO lists (task, date) VALUES ($1, $2) RETURNING task, date", 
-        [req.body.task, req.body.date]) 
+
+    db.query("INSERT INTO lists (task, date) VALUES ($1, $2) RETURNING task, date",
+        [req.body.task, req.body.date])
         .then((lists) => {
             console.log(lists)
             return res.redirect('/')
@@ -40,9 +40,9 @@ router.post('/addtask', (req, res) => {
             console.log(err)
             res.render('pages/error', {
                 err: err
-			})
-		})
-})
+            })
+        })
+});
 
 
 //delete task route 
@@ -52,7 +52,7 @@ router.post('/deletetask', (req, res) => {
 
         db.none('DELETE FROM lists WHERE id = $1', [req.query.id])
             .then(() => {
-                res.redirect(302,'/',)
+                res.redirect(302, '/',)
             })
             .catch((err) => {
                 res.render('pages/error', {
@@ -68,8 +68,12 @@ router.post('/deletetask', (req, res) => {
             }
         })
     }
-}) 
-       
-        
+});
 
+
+//mark as done route
+/*router.post('/markAsDone', (req, res) => {
+
+});*/
 module.exports = router;
+        

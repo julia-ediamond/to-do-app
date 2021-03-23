@@ -4,6 +4,19 @@ body {
     border: 0;
 }
 
+*, *:before, *:after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+.content-center-block {
+    width: 75%;
+    max-width: 1080px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 p, li, td, th {
     font-family: 'Lato', sans-serif;
     font-size: 1em;
@@ -82,4 +95,9 @@ li {
     text-align: center;
     font-family; Lato;
     font-size: 20px;
+}
+
+.delete_button {
+    background-color: transparent;
+    color: #bcc2cc;
 }

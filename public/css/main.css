@@ -1,0 +1,85 @@
+body {
+    background-color: #292d38;
+    margin: 0;
+    border: 0;
+}
+
+p, li, td, th {
+    font-family: 'Lato', sans-serif;
+    font-size: 1em;
+    line-height: 1.5em;
+    color: #bcc2cc;
+}
+
+h1, h2, h3 {
+    color: #bcc2cc;
+    font-family: 'Crimson Text', serif;
+    text-align: center;
+    margin: 30px 0;
+    line-height: 1.25em;
+}
+
+button {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #00bb8e;
+    background-color: #00bb8e;
+    margin: 10px auto;
+    display: block;
+    padding: 10px 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1em;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    border-radius: 15px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    padding: 5em;
+}
+
+td, th {
+    margin: 3em;
+    padding: 1em;
+    text-align: center !important;
+}
+
+
+
+form {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+label {
+    font-size: 1.2em;
+    display: block;
+    font-weight: 700;
+    font-family: 'Lato', sans-serif;
+}
+
+input, select {
+    width: 100%;
+    margin: 0.5em;
+    margin-left: 0;
+    padding: 10px;
+    border-radius: 15px;
+    border-style: solid;
+    border-width: 1px;
+    
+}
+
+li {
+    padding: 1.5em;
+    list-style-type: none;
+}
+
+.error_message {
+    text-align: center;
+    font-family; Lato;
+    font-size: 20px;
+}

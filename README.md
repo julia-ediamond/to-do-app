@@ -3,7 +3,7 @@
 
 # to-do-app
 
-A to-do-app which allows to create tasks and delete them when they are done. Th ability to mark them as done is underway. 
+A to-do-app which allows to create tasks and delete them when they are done. The ability to mark them as done is underway. 
 
 
 ## Contributors
